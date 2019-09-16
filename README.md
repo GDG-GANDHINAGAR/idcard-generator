@@ -2,7 +2,7 @@
 
 This similar code can be used further for certificate generation also.
 
-## How to Use
+## How to Use 😕
 
 ### Get your `credentials.json` file
 
@@ -24,13 +24,20 @@ Run the following command
     pip install qrcode[pil] qrcode
 ```
 
+### Create folders if not already
+
+```sh
+    mkdir cards
+    mkdir qrcodes
+```
+
 Now simply run:
 
 ```sh
     python idgen.py
 ```
 
-## Makers
+## Makers 🛠
 
 - Code by Jay Mistry [@rossoskull](https://github.com/rossoskull)
 - Designs by Pranay Agarwal [pydesigns](https://www.behance.net/pydesigns)
