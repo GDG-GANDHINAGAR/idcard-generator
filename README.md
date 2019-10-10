@@ -8,20 +8,18 @@ This similar code can be used further for certificate generation also.
 
 Visit [this](https://developers.google.com/sheets/api/quickstart/python) and click on the 'Enable the Google Sheets API' to enable sheets API for your account, and get your `credentials.json` file.
 
-### Install Sheets pip module
+### Install pipenv
 
-Run the following command to install the Google Sheets module
+Use the command
 
 ```sh
-    pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+sudo -H pip install pipenv
 ```
 
-### Install `qrcode` for QR code generation
-
-Run the following command
+and then simply setup pipenv
 
 ```sh
-    pip install qrcode[pil] qrcode
+pipenv Install
 ```
 
 ### Create folders if not already
