@@ -2,3 +2,4 @@ credentials.json
 token.pickle
 /qrcodes/*
 /cards/*
+.env
