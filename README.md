@@ -22,6 +22,12 @@ and then simply setup pipenv
 pipenv install
 ```
 
+and activate pipenv shell using
+
+```sh
+pipenv shell
+```
+
 ### Create folders if not already
 
 ```sh
