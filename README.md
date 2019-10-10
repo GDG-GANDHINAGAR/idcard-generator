@@ -19,7 +19,7 @@ sudo -H pip install pipenv
 and then simply setup pipenv
 
 ```sh
-pipenv Install
+pipenv install
 ```
 
 ### Create folders if not already
