@@ -2,7 +2,7 @@ from string import Template
 
 
 def html(name, email):
-    tweet = "I'm glad to tell that I will be attending DevFest Gandhinagar on 13th October.Thanks @GDG_Gandhinagar"
+    tweet = "I'm glad to tell that I will be attending DevFest Gandhinagar on 13th October. @GDG_Gandhinagar"
     hashtags = "DevFestGnr,DevFest19,GDGGnr,WTMGnr,DevFest"
     htmlString = Template('''
     <!doctype html>
@@ -39,10 +39,8 @@ def html(name, email):
         
       <!--[if !mso]><!-->
         <link href="https://fonts.googleapis.com/css?family=Product+Sans" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" type="text/css">
         <style type="text/css">
           @import url(https://fonts.googleapis.com/css?family=Product+Sans);
-@import url(https://fonts.googleapis.com/css?family=);
         </style>
       <!--<![endif]-->
 
