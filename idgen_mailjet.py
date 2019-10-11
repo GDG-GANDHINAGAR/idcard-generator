@@ -14,7 +14,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from html import html
+from mail_temp import mail_temp
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -32,8 +32,8 @@ mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
-SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID')
-SAMPLE_RANGE_NAME = 'A139:V339'
+SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
+SAMPLE_RANGE_NAME = 'A2:V2'
 
 
 def main():
@@ -133,23 +133,6 @@ def main():
                 draw.text(((321 - x / 2), (810 - y / 2)),
                           inst, font=font, fill='black')
 
-            # Get and paste the profile picture
-            # print('\tGetting profile picture...')
-            # imageResponse = requests.get(imageUrl)
-            # profileImage = Image.open(BytesIO(imageResponse.content))
-
-            # profileImage.thumbnail((288, 288), Image.ANTIALIAS)
-
-            # # Make the image a circle
-            # bigsize = (profileImage.size[0] * 3, profileImage.size[1] * 3)
-            # mask = Image.new('L', bigsize, 0)
-            # maskDraw = ImageDraw.Draw(mask)
-            # maskDraw.ellipse((0,0) + bigsize, fill=255)
-            # mask = mask.resize(profileImage.size, Image.ANTIALIAS)
-            # profileImage.putalpha(mask)
-
-            # template.paste(profileImage, (175, 282), profileImage)
-
             # Add abstract element
             element = Image.open('element.png')
             element.thumbnail((59, 59), Image.ANTIALIAS)
@@ -176,7 +159,7 @@ def main():
                             }
                         ],
                         "Subject": "[ID Card] GDG Gandhinagar - DevFest 2019",
-                        "HTMLPart": html(name, email),
+                        "HTMLPart": mail_temp(name, email),
                         "Attachments": [
                             {
                                 "Filename": name + '.png',
