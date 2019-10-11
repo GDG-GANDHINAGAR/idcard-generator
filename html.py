@@ -252,7 +252,7 @@ def html(name, email):
                 
       <div
          style="font-family:Arial, sans-serif;font-size:13px;line-height:24px;text-align:left;color:#000000;"
-      ><p style="font-size: 13px; margin: 10px 0;"><font color="#ffffff" face="Product Sans, Helvetica, Arial, sans-serif"><span style="color:#ffffff;">Download Our Android App to follow our Timeline and get more updates there itself.</span><br><b style="font-weight:700;"><span style="color:#ffffff;">Download Link: </b> </span><a target="_blank" style="color: rgb(255, 255, 255);" href="https://github.com/GDG-GANDHINAGAR/devfest-19-mobile/releases/download/v1.4.2%2B6/app-release.apk"><span style="color:#ffffff;">Android App</span></a></font></p></div>
+      ><p style="font-size: 13px; margin: 10px 0;"><font color="#ffffff" face="Product Sans, Helvetica, Arial, sans-serif"><span style="color:#ffffff;">Download Our Android App to follow our Timeline and get more updates there itself.</span><br><b style="font-weight:700;"><span style="color:#ffffff;">Download Link: </b> </span><a target="_blank" style="color: rgb(255, 255, 255);" href="https://github.com/GDG-GANDHINAGAR/devfest-19-mobile/releases/download/v1.4.2%2B6/DevFestGNR.apk"><span style="color:#ffffff;">Android App</span></a></font></p></div>
     
               </td>
             </tr>
