@@ -25,6 +25,7 @@ API_KEY = os.getenv('SG_APIKEY')
 ORG_EMAIL = os.getenv('ORG_EMAIL')
 ORG_NAME = os.getenv('ORG_NAME')
 FONT = os.getenv('FONT')
+# print(API_KEY)
 
 sg = SendGridAPIClient(API_KEY)
 
@@ -32,12 +33,12 @@ sg = SendGridAPIClient(API_KEY)
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
-SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
-SAMPLE_RANGE_NAME = 'A2:V2'
-
+SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_RE')
+SAMPLE_RANGE_NAME = 'A2:V'
 
 def main():
     print("Getting data from the sheet...")
+    no = 326
 
     creds = None
 
@@ -74,94 +75,86 @@ def main():
             reg_id = row[0]
             name = row[1] + ' ' + row[2]
             email = row[3]
-            designation = row[18]
-            inst = row[19]
-            org = row[21]
+            # designation = row[18]
+            # inst = row[19]
+            # org = row[21]
 
-            print('Generating card for %s...' % (name))
+            # print('%s: Generating card for %s...' % (no, name))
+            # no-=1
+            # qr = qrcode.QRCode(
+            #     version=1,
+            #     error_correction=qrcode.constants.ERROR_CORRECT_M,
+            #     box_size=10,
+            #     border=2,
+            # )
+            # qr.add_data(reg_id)
+            # qr.make(fit=True)
+            # img = qr.make_image()
 
-            qr = qrcode.QRCode(
-                version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_M,
-                box_size=10,
-                border=2,
-            )
-            qr.add_data(reg_id)
-            qr.make(fit=True)
-            img = qr.make_image()
+            # # Resize the QR code to 150px X 150px
+            # img.thumbnail((221, 221), Image.ANTIALIAS)
 
-            # Resize the QR code to 150px X 150px
-            img.thumbnail((221, 221), Image.ANTIALIAS)
+            # img.save(os.path.join('qrcodes', email + '.png'))
 
-            img.save(os.path.join('qrcodes', email + '.png'))
+            # template = Image.open('template.png')
 
-            template = Image.open('template.png')
+            # # Paste QR code
+            # template.paste(img, (205, 360))
 
-            # Paste QR code
-            template.paste(img, (205, 360))
+            # # Write the name
+            # draw = ImageDraw.Draw(template)
+            # font = ImageFont.truetype(FONT, 55)
 
-            # Write the name
-            draw = ImageDraw.Draw(template)
-            font = ImageFont.truetype(FONT, 55)
+            # x, y = font.getsize(name)
 
-            x, y = font.getsize(name)
+            # draw.text(((321 - x / 2), (710 - y / 2)),
+            #           name, font=font, fill='black')
 
-            draw.text(((321 - x / 2), (710 - y / 2)),
-                      name, font=font, fill='black')
+            # # Write the designation
+            # if designation != 'NA':
+            #     draw = ImageDraw.Draw(template)
+            #     font = ImageFont.truetype(FONT, 26)
+            #     x, y = font.getsize(designation)
+            #     draw.text(((321 - x / 2), (770 - y / 2)),
+            #               designation, font=font, fill='black')
 
-            # Write the designation
-            if designation != 'NA':
-                draw = ImageDraw.Draw(template)
-                font = ImageFont.truetype(FONT, 26)
-                x, y = font.getsize(designation)
-                draw.text(((321 - x / 2), (770 - y / 2)),
-                          designation, font=font, fill='black')
+            # if org != 'NA':
+            #     draw = ImageDraw.Draw(template)
+            #     font = ImageFont.truetype(FONT, 30)
+            #     x, y = font.getsize(org)
 
-            if org != 'NA':
-                draw = ImageDraw.Draw(template)
-                font = ImageFont.truetype(FONT, 30)
-                x, y = font.getsize(org)
+            #     draw.text(((321 - x / 2), (810 - y / 2)),
+            #               org, font=font, fill='black')
 
-                draw.text(((321 - x / 2), (810 - y / 2)),
-                          org, font=font, fill='black')
+            # elif inst != 'NA':
+            #     draw = ImageDraw.Draw(template)
+            #     font = ImageFont.truetype(FONT, 30)
+            #     x, y = font.getsize(inst)
 
-            elif inst != 'NA':
-                draw = ImageDraw.Draw(template)
-                font = ImageFont.truetype(FONT, 30)
-                x, y = font.getsize(inst)
+            #     draw.text(((321 - x / 2), (810 - y / 2)),
+            #               inst, font=font, fill='black')
 
-                draw.text(((321 - x / 2), (810 - y / 2)),
-                          inst, font=font, fill='black')
+            # # Add abstract element
+            # element = Image.open('element.png')
+            # element.thumbnail((59, 59), Image.ANTIALIAS)
+            # template.paste(element, (407, 557), element)
+            # # Save the card
+            # template.save(os.path.join('cards', email + '.png'))
 
-            # Add abstract element
-            element = Image.open('element.png')
-            element.thumbnail((59, 59), Image.ANTIALIAS)
-            template.paste(element, (407, 557), element)
-            # Save the card
-            template.save(os.path.join('cards', email + '.png'))
-
-            buffer = BytesIO()
-            template.save(buffer, format="PNG")
-            base64Value = base64.b64encode(buffer.getvalue())
+            # buffer = BytesIO()
+            # template.save(buffer, format="PNG")
+            # base64Value = base64.b64encode(buffer.getvalue())
 
             message = Mail(
                 from_email=(ORG_EMAIL, "GDG Gandhinagar"),
-                subject="[ID Card] GDG Gandhinagar - DevFest 2019",
+                subject="GDG Gandhinagar - DevFest 2019: We’re at capacity!",
                 to_emails=[(email, name)],
                 html_content=Content("text/html", mail_temp(name, email)))
-
-            attachment = Attachment()
-            attachment.file_content = base64Value.decode()
-            attachment.file_type = "image/png"
-            attachment.file_name = "{}.png".format(name)
-            attachment.disposition = "attachment"
-
-            message.add_attachment(attachment)
 
             print("\tSending mail to " + name + "...")
 
             result = sg.client.mail.send.post(message.get())
-            if result.status_code == 200:
+            if result.status_code == 202:
                 print("\t\tMail sent.")
             else:
                 print("\t\tMail not sent.")
