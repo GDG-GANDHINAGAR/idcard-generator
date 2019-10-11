@@ -1,5 +1,4 @@
 from __future__ import print_function
-from mailjet_rest import Client
 import json
 import os
 import base64
@@ -15,18 +14,19 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from mail_temp import mail_temp
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail, Attachment, Content
 
 from dotenv import load_dotenv
 load_dotenv()
 
 
-API_KEY = os.getenv('MJ_APIKEY_PUBLIC')
-API_SECRET = os.getenv('MJ_APIKEY_PRIVATE')
+API_KEY = os.getenv('SG_APIKEY')
 ORG_EMAIL = os.getenv('ORG_EMAIL')
 ORG_NAME = os.getenv('ORG_NAME')
 FONT = os.getenv('FONT')
 
-mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
+sg = SendGridAPIClient(API_KEY)
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -144,36 +144,23 @@ def main():
             template.save(buffer, format="PNG")
             base64Value = base64.b64encode(buffer.getvalue())
 
-            # SEND THE CARD AS AN EMAIL
-            data = {
-                'Messages': [
-                    {
-                        "From": {
-                            "Email": ORG_EMAIL,
-                            "Name": ORG_NAME,
-                        },
-                        "To": [
-                            {
-                                "Email": email,
-                                "Name": name
-                            }
-                        ],
-                        "Subject": "[ID Card] GDG Gandhinagar - DevFest 2019",
-                        "HTMLPart": mail_temp(name, email),
-                        "Attachments": [
-                            {
-                                "Filename": name + '.png',
-                                "ContentType": "image/png",
-                                "Base64Content": base64Value.decode("utf-8")
-                            }
-                        ]
-                    }
-                ]
-            }
+            message = Mail(
+                from_email=(ORG_EMAIL, "GDG Gandhinagar"),
+                subject="[ID Card] GDG Gandhinagar - DevFest 2019",
+                to_emails=[(email, name)],
+                html_content=Content("text/html", mail_temp(name, email)))
+
+            attachment = Attachment()
+            attachment.file_content = base64Value.decode()
+            attachment.file_type = "image/png"
+            attachment.file_name = "{}.png".format(name)
+            attachment.disposition = "attachment"
+
+            message.add_attachment(attachment)
 
             print("\tSending mail to " + name + "...")
 
-            result = mailjet.send.create(data=data)
+            result = sg.client.mail.send.post(message.get())
             if result.status_code == 200:
                 print("\t\tMail sent.")
             else:
