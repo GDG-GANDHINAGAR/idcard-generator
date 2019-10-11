@@ -1,7 +1,7 @@
 from string import Template
 
 
-def html(name, email):
+def mail_temp(name, email):
     tweet = "I'm glad to tell that I will be attending DevFest Gandhinagar on 13th October. @GDG_Gandhinagar"
     hashtags = "DevFestGnr,DevFest19,GDGGnr,WTMGnr,DevFest"
     htmlString = Template('''
