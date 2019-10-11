@@ -3,3 +3,5 @@ token.pickle
 /qrcodes/*
 /cards/*
 .env
+.vscode/
+__pycache__
