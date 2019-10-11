@@ -1,7 +1,8 @@
 from string import Template
 
+
 def html(name, email):
-  htmlString = Template('''
+    htmlString = Template('''
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
       <head>
         <title>[ID Card] GDG Gandhinagar - DevFest 2019</title>
@@ -277,4 +278,4 @@ def html(name, email):
     </html>
   ''')
 
-  return htmlString.substitute(name=name, email=email)
+    return htmlString.substitute(name=name, email=email)
