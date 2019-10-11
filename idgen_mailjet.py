@@ -32,8 +32,8 @@ mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
-SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
-SAMPLE_RANGE_NAME = 'A2:V'
+SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID')
+SAMPLE_RANGE_NAME = 'A139:V339'
 
 
 def main():
