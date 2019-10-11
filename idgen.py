@@ -33,7 +33,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
 SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
-SAMPLE_RANGE_NAME = 'A2:D4'
+SAMPLE_RANGE_NAME = 'A2:D6'
 
 
 def main():
