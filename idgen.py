@@ -32,7 +32,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
 SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
-SAMPLE_RANGE_NAME = 'A2:D'
+SAMPLE_RANGE_NAME = 'A2:V'
 
 
 def main():
@@ -73,6 +73,8 @@ def main():
             reg_id = row[0]
             name = row[1] + ' ' + row[2]
             email = row[3]
+            designation = row[18]
+            org = row[21]
 
             print('Generating card for %s...' % (name))
 
@@ -102,8 +104,21 @@ def main():
 
             x, y = font.getsize(name)
 
-            draw.text(((321 - x / 2), (730 - y / 2)),
-                      name, font=font, fill='black')
+            draw.text(((321 - x / 2), (710 - y / 2)), name, font=font, fill='black')
+
+            # Write the designation
+            if designation != 'NA':
+                draw = ImageDraw.Draw(template)
+                font = ImageFont.truetype(FONT, 26)
+                x, y = font.getsize(designation)
+                draw.text(((321 - x / 2), (770 - y / 2)), designation, font=font, fill='black')
+
+            if org != 'NA':
+                draw = ImageDraw.Draw(template)
+                font = ImageFont.truetype(FONT, 30)
+                x, y = font.getsize(org)
+
+                draw.text(((321 - x / 2), (810 - y / 2)), org, font=font, fill='black')
 
             # Get and paste the profile picture
             # print('\tGetting profile picture...')
