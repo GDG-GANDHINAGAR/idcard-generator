@@ -14,6 +14,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+from html import html
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -163,7 +164,7 @@ def main():
                             }
                         ],
                         "Subject": "[ID Card] GDG Gandhinagar - DevFest 2019",
-                        "HTMLPart": "Hi, {}! <br/><h4>Greetings from DevFest Gandhinagar</h4><br />Please find attached your ID card in this mail.".format(name),
+                        "HTMLPart": html(name, email),
                         "Attachments": [
                             {
                                 "Filename": name + '.png',
