@@ -174,41 +174,7 @@ def mail_temp(name, email):
                                       target="_blank"><img height="20"
                                         src="https://www.mailjet.com/images/theme/v1/icons/ico-social/twitter.png"
                                         style="border-radius:3px;display:block;"
-                                        width="20"></a></td></tr></table></td></tr></table><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div
-        style="background:#000000;background-color:#000000;margin:0px
-        auto;max-width:600px;"><table align="center" border="0" cellpadding="0"
-          cellspacing="0" role="presentation"
-          style="background:#000000;background-color:#000000;width:100%;"><tbody><tr><td
-                style="border:0px solid
-                #ffffff;direction:ltr;font-size:0px;padding:0px 0px 0px
-                0px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;"><!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]--><div
-                  class="mj-column-per-100 mj-outlook-group-fix"
-                  style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><table
-                    border="0" cellpadding="0" cellspacing="0"
-                    role="presentation" width="100%"><tbody><tr><td
-                          style="vertical-align:top;padding:0;"><table
-                            border="0" cellpadding="0" cellspacing="0"
-                            role="presentation" width="100%"><tr><td
-                                align="center" style="font-size:0px;padding:10px
-                                25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><div
-                                  style="font-family:Arial,
-                                  sans-serif;font-size:11px;line-height:22px;text-align:center;color:#000000;"><p
-                                    style="font-size: 13px; margin: 10px 0;"><span
-                                      style="font-family:"><span
-                                        style="color:#000000"><b
-                                          style="font-weight:400"><span
-                                            style="font-weight:400">This e-mail
-                                            has been sent to $email, </span></b></span><a
-                                        target="_blank" style="color:#000000;
-                                        font-weight:400; text-decoration:none"
-                                        href="[[UNSUB_LINK_EN]]"><span
-                                          style="color:#000000"><b
-                                            style="font-weight:400"><span
-                                              style="font-weight:400">click here
-                                              to unsubscribe</span></b></span></a><span
-                                        style="color:#000000"><b
-                                          style="font-weight:400"><span
-                                            style="font-weight:400">.</span></b></span></span></p></div></td></tr></table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></div></body></html>
+                                        width="20"></a></td></tr></table></td></tr></table><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><!--[if mso | IE]></td></tr></table><![endif]--></div></body></html>
   ''')
 
     return htmlString.substitute(name=name, email=email)

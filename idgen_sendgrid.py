@@ -33,13 +33,11 @@ sg = SendGridAPIClient(API_KEY)
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
-SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
-SAMPLE_RANGE_NAME = 'A2:V'
+SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID')
+SAMPLE_RANGE_NAME = 'A22:V'
 
 def main():
     print("Getting data from the sheet...")
-    no = 326
-
     creds = None
 
     if os.path.exists('token.pickle'):
