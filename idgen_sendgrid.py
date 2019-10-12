@@ -13,7 +13,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from mail_temp import mail_temp
+from schedule_mail import mail_temp
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Attachment, Content
 
@@ -33,7 +33,7 @@ sg = SendGridAPIClient(API_KEY)
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
-SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_RE')
+SAMPLE_SPREADSHEET_ID = os.getenv('SHEET_ID_TEST')
 SAMPLE_RANGE_NAME = 'A2:V'
 
 def main():
@@ -147,7 +147,7 @@ def main():
 
             message = Mail(
                 from_email=(ORG_EMAIL, "GDG Gandhinagar"),
-                subject="GDG Gandhinagar - DevFest 2019: We’re at capacity!",
+                subject="Schedule: DevFest Gandhinagar 2019",
                 to_emails=[(email, name)],
                 html_content=Content("text/html", mail_temp(name, email)))
 
